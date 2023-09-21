@@ -1,3 +1,69 @@
+map: https://github.com/tunnima/my-docs
+# Installation:
+```text
+pip3 install -U proxynt
+```
+Commands after installation:
+```text
+nt_server
+nt_client
+```
+# Configuration:
+### Server A.A.A.A:
+```text
+mkdir proxynt
+cd proxynt
+```
+**vi config_s.json**
+```text
+{
+  "port": 8001,
+  "password": "Freedom",
+  "path": "/dkofgkjyhfgjkhnmsnwerjkewhfkjsdhf",
+  "admin": {
+    "enable": false,
+    "admin_password": "Freedom"
+  }
+}
+```
+**And at last:**
+```text
+nt_server -c config_s.json
+```
+
+### Client B.B.B.B:
+```text
+mkdir proxynt
+cd proxynt
+```
+**vi config_s.json**
+```text
+{
+  "server": {
+    "port": 8001,
+    "host": "A.A.A.A",
+    "https": false,
+    "password": "Freedom",
+    "path": "/dkofgkjyhfgjkhnmsnwerjkewhfkjsdhf"
+  },
+  "client": [
+    {
+      "name": "ssh",
+      "remote_port": 3125,
+      "local_port": 4445,
+      "local_ip": "127.0.0.1"
+    }
+  ],
+  "client_name": "ubuntu1",
+  "log_file": "/var/log/nt/nt.log"
+}
+```
+**And at last:**
+```text
+nt_client -c config_c.json
+```
+
+# Main:
 ProxyNT 是一个反向代理服务器，可以透过NAT和防火墙将本地服务器暴露到公网上
 
 ## [English Readme](./readme_en.md)
